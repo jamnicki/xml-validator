@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block results %}
+  {% if not invalid_files and not valid_files %}
+    <p class="text-center">No results</p>
+  {% endif %}
+  <div class="files-container">
+  {% if invalid_files %}
+    {% for invalid_file in invalid_files %}
+      <div class="file-box invalid-file">
+        <b>{{ invalid_file }}</b>
+      </div>
+    {% endfor %}
+  {% endif %}
+  {% if valid_files %}
+    {% for valid_file in valid_files %}
+    <div class="file-box valid-file">
+      <b>{{ valid_file }}</b>
+    </div>
+    {% endfor %}
+  {% endif %}
+  </div>
+{% endblock %}
