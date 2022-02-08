@@ -1,14 +1,40 @@
 {% extends 'base.html' %}
 
 {% block results %}
+  {% if non_xml_files %}
+    {% if non_xml_files|length == 1 %}
+      <p class="text-center">
+        <b>{{ non_xml_files[0] }}</b> is not an XML file!
+      </p>
+    {% elif non_xml_files|length > 1 %}
+      <p class="text-center">
+        <b>{{ non_xml_files[0] }}</b> and <a title="{{ non_xml_files|join(', ') }}"><b>{{ non_xml_files|length-1 }}</b></a> more are not XML files!
+      </p>
+    {% endif %}
+  {% endif %}
   {% if not invalid_files and not valid_files %}
     <p class="text-center">No results</p>
   {% endif %}
   <div class="files-container">
   {% if invalid_files %}
-    {% for invalid_file in invalid_files %}
+    {% for invalid_file, errors in invalid_files.items() %}
       <div class="file-box invalid-file">
         <b>{{ invalid_file }}</b>
+        <a class="btn" data-bs-toggle="collapse" href="#collapseErrors{{ loop.index }}" title="Click for details"
+           role="button" aria-expanded="false" aria-controls="collapseErrors{{ loop.index }}">
+          <img class="details_ico" src="/static/images/help_outline_black_24dp.svg">
+        </a>
+        {% if errors %}
+          <div class="collapse" id="collapseErrors{{ loop.index }}">
+            <div class="card card-body" id="errors-card">
+              <ul>
+                {% for error in errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        {% endif %} 
       </div>
     {% endfor %}
   {% endif %}

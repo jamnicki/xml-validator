@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="sample">
+    <xs:complexType>
+      <xs:sequence  maxOccurs="1" minOccurs="1">
+        <xs:element name="newspaper">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="title_newspaper" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="title_article"/>
+        <xs:element name="authors" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="author" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="language" minOccurs="0" maxOccurs="1"/>
+        <xs:element type="xs:string" name="style" minOccurs="0" maxOccurs="1"/>
+        <xs:element type="xs:short" name="year" minOccurs="0" maxOccurs="1"/>
+        <xs:element type="xs:string" name="month" minOccurs="0" maxOccurs="1"/>
+        <xs:element type="xs:string" name="day" minOccurs="0" maxOccurs="1"/>
+        <xs:element type="xs:date" name="date" minOccurs="0" maxOccurs="1"/>
+        <xs:element type="xs:string" name="period" minOccurs="0" maxOccurs="1"/>
+        <xs:element type="xs:string" name="status" minOccurs="0" maxOccurs="1"/>
+        <xs:element type="xs:string" name="support" minOccurs="0" maxOccurs="1"/>
+        <xs:element type="xs:string"  name="exposition" minOccurs="0" maxOccurs="1"/>
+        <xs:element type="xs:string" name="text"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
