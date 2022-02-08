@@ -13,6 +13,15 @@ div#content.container {
   margin-bottom: 20px;
 }
 
+div#errors-card {
+  background-color: var(--invalid-file-background);
+  text-align: left;
+}
+
+.details_ico {
+  vertical-align: sub;
+}
+
 .thumbnails-container {
   width: 100%;
   height: 100%;
